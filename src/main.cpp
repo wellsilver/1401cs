@@ -15,9 +15,11 @@ int main() {
   rthread.detach();
 
   // make the 1401's thread
-  auto cthread = thread(mainframe_1401::run); // still confused on why making a thread this way is working
+  auto cthread = thread(computerrun); // still confused on why making a thread this way is working
   cthread.detach();
   
+  rthread.join();
+  cthread.join();
 
   return 0;
 }

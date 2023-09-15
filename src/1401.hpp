@@ -34,3 +34,8 @@ string mainframe_1401::dumpsection(int start, int end) {
   }
   return ret;
 }
+
+void computerrun() {
+  auto c = new mainframe_1401;
+  c->run();
+}
