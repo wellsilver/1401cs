@@ -1,5 +1,6 @@
 // simulation script
 
+#include <chrono>
 #include <stdint.h>
 #include <string>
 #include <list>
@@ -8,7 +9,7 @@ using std::string;
 using std::list;
 
 struct word1401 {
-  char mem; 
+  char mem;
   // ^ store the character in its actual string form. 
   // I cant find any resources on how the 1401 stored its bits internally, 
   // and the proggraming guides table is not explained
@@ -34,6 +35,7 @@ string mainframe_1401::dumpsection(int start, int end) {
   }
   return ret;
 }
+// as a c proggramer who just started learning c++, why does mainframe_1401::dumpsection look so ugly?
 
 void computerrun() {
   auto c = new mainframe_1401;
