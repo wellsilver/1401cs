@@ -17,15 +17,14 @@ struct word1401 {
 
 class mainframe_1401 {
   public:
-    void init(int);
+    void run();
 
     list<word1401> memory; // size is either 1400, 4000, or 16000
     string dumpsection(int, int);
 };
 
-void mainframe_1401::init(int memorysize) {
-  memory.erase(memory.begin);
-  memory.resize(memorysize);
+void mainframe_1401::run() {
+  
 }
 
 string mainframe_1401::dumpsection(int start, int end) {
