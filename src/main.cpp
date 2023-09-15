@@ -5,10 +5,10 @@
 
 using namespace std;
 
-#include "1401.hpp"
-
 int main() {
   SDL_Init(SDL_INIT_EVERYTHING);
+
+
 
   return 0;
 }
