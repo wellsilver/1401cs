@@ -1,12 +1,13 @@
 
-run: main.o activate clean
-build: main.o
+all: run
+run: out/main.o activate clean
+build: out/main.o
 
-main.o:
-	g++ main.cpp -o main.o
+out/main.o:
+	g++ main.cpp -l sdl2 -o out/main.o
 
 activate:
-	./main.o
+	./out/main.o
 
 clean:
-	rm main.o
+	rm out/main.o
