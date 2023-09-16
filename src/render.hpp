@@ -38,10 +38,10 @@ void button(int posx,int posy,int sizex,int sizey,bool toggled) {
   }
   SDL_RenderFillRect(renderer, &button);
   if (SDL_PointInRect(&mouse,&button)) {
-    SDL_SetRenderDrawColor(renderer, 255,255,255, SDL_ALPHA_OPAQUE);
+    SDL_SetRenderDrawColor(renderer, r*1.3,g*1.3,b*1.3, SDL_ALPHA_OPAQUE);
     SDL_RenderDrawRect(renderer, &buttonoutfillreverse);
   } else {
-    SDL_SetRenderDrawColor(renderer, 0,0,0, SDL_ALPHA_OPAQUE);
+    SDL_SetRenderDrawColor(renderer, r*0.7,g*0.7,b*0.7, SDL_ALPHA_OPAQUE);
     SDL_RenderDrawRect(renderer, &buttonoutfillreverse);
   }
 }
@@ -68,11 +68,11 @@ void render() {
     SDL_GetMouseState(&mouse.x,&mouse.y);
     
     SDL_SetRenderDrawColor(renderer,0,100,0,SDL_ALPHA_OPAQUE);
-    button(getx(0.3),gety(0.8),getx(0.1),gety(0.05),false);
+    button(getx(0.1),gety(0.8),getx(0.2),gety(0.05),false);
     SDL_SetRenderDrawColor(renderer,100,100,100,SDL_ALPHA_OPAQUE);
-    button(getx(0.45),gety(0.8),getx(0.1),gety(0.05),false);
+    button(getx(0.4),gety(0.8),getx(0.2),gety(0.05),false);
     SDL_SetRenderDrawColor(renderer,100,0,0,SDL_ALPHA_OPAQUE);
-    button(getx(0.6),gety(0.8),getx(0.1),gety(0.05),false);
+    button(getx(0.7),gety(0.8),getx(0.2),gety(0.05),false);
 
     SDL_RenderPresent(renderer);
     SDL_UpdateWindowSurface(window);
