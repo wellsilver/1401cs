@@ -2,7 +2,6 @@
 #include <thread>
 
 #include "1401.hpp"
-
 #include "render.hpp"
 
 #define SDL_MAIN_HANDLED
@@ -16,7 +15,13 @@ int main() {
 
   computerrun();
 
+  // send a event that gets ignored to the renderer to get a frame
+  SDL_Event fakeevent;
+  fakeevent.type = SDL_FINGERMOTION;
+  SDL_PollEvent(&fakeevent);
+
   th.join();
 
+  SDL_Quit();
   return 0;
 }
