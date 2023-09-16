@@ -17,24 +17,41 @@ inline int gety(float pos) {
   return viewport.h * pos;
 }
 
-void button(int posx,int posy,int sizex,int sizey) {
+void button(int posx,int posy,int sizex,int sizey,bool toggled) {
+  Uint8 r,g,b;
   SDL_Rect button;
+  SDL_Rect buttonoutfillreverse;
   button.x = posx;
   button.y = posy;
   button.h = sizey;
   button.w = sizex;
-  if (SDL_PointInRect(&mouse,&button)) {
-    SDL_SetRenderDrawColor(renderer, 150,150,150,SDL_ALPHA_OPAQUE);
+  buttonoutfillreverse = button;
+  buttonoutfillreverse.y += SDL_ceil((button.h*0.1)/2);
+  buttonoutfillreverse.x += SDL_ceil((button.w*0.05)/2);
+  buttonoutfillreverse.h -= (button.h*0.1);
+  buttonoutfillreverse.w -= (button.w*0.05);
+  SDL_GetRenderDrawColor(renderer,&r,&g,&b,NULL);
+  if (toggled) {
+    SDL_SetRenderDrawColor(renderer, r*1.5,g*1.5,b*1.5, SDL_ALPHA_OPAQUE);
   } else {
-    SDL_SetRenderDrawColor(renderer, 100,100,100,SDL_ALPHA_OPAQUE);
+    SDL_SetRenderDrawColor(renderer, r,g,b, SDL_ALPHA_OPAQUE);
   }
   SDL_RenderFillRect(renderer, &button);
+  if (SDL_PointInRect(&mouse,&button)) {
+    SDL_SetRenderDrawColor(renderer, 255,255,255, SDL_ALPHA_OPAQUE);
+    SDL_RenderDrawRect(renderer, &buttonoutfillreverse);
+  } else {
+    SDL_SetRenderDrawColor(renderer, 0,0,0, SDL_ALPHA_OPAQUE);
+    SDL_RenderDrawRect(renderer, &buttonoutfillreverse);
+  }
 }
 
 void render() {
   SDL_Init(SDL_INIT_EVERYTHING);
 
-  SDL_CreateWindowAndRenderer(500,500,SDL_WINDOW_RESIZABLE,&window,&renderer);
+  SDL_CreateWindowAndRenderer(300,400,0,&window,&renderer);
+
+  SDL_SetWindowMinimumSize(window,200,300);
 
   SDL_WaitEvent(&e); // wait for a event that main.cpp sends (so we arent just trying to read random memory)
 
@@ -45,13 +62,18 @@ void render() {
         return;
       break;
     }
-    SDL_SetRenderDrawColor(renderer,0,0,0,SDL_ALPHA_OPAQUE);
+    SDL_SetRenderDrawColor(renderer,50,50,50,SDL_ALPHA_OPAQUE);
     SDL_RenderClear(renderer);
     SDL_RenderGetViewport(renderer, &viewport);
     SDL_GetMouseState(&mouse.x,&mouse.y);
     
-    button(getx(0.1),gety(0.1),getx(0.1),gety(0.1));
-    
+    SDL_SetRenderDrawColor(renderer,0,100,0,SDL_ALPHA_OPAQUE);
+    button(getx(0.3),gety(0.8),getx(0.1),gety(0.05),false);
+    SDL_SetRenderDrawColor(renderer,100,100,100,SDL_ALPHA_OPAQUE);
+    button(getx(0.45),gety(0.8),getx(0.1),gety(0.05),false);
+    SDL_SetRenderDrawColor(renderer,100,0,0,SDL_ALPHA_OPAQUE);
+    button(getx(0.6),gety(0.8),getx(0.1),gety(0.05),false);
+
     SDL_RenderPresent(renderer);
     SDL_UpdateWindowSurface(window);
 

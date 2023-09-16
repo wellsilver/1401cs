@@ -21,3 +21,5 @@ ai upscaled and enhanced [original](https://multicians.org/thvv/vvimg/1401rcdb.g
 
 ai upscaled and enhanced [original](https://multicians.org/thvv/vvimg/1401rcdf.gif)
 ![Alt text](image3.jpeg)
+
+[operators guide](http://bitsavers.trailing-edge.com/pdf/ibm/1401/A24-3144-2_1401_operGuide.pdf)

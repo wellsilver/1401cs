@@ -15,7 +15,7 @@ int main() {
 
   computerrun();
 
-  // send a event that gets ignored to the renderer to get a frame
+  // send a event that gets ignored to the renderer to render a frame
   SDL_Event fakeevent;
   fakeevent.type = SDL_FINGERMOTION;
   SDL_PollEvent(&fakeevent);
