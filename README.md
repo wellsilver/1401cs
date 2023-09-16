@@ -14,4 +14,10 @@ project to learn old computor and cpp
 
 ![character code cheat sheet]()
 
-![Sample card](image-1.png)
+![Sample card](image1.png)
+
+ai upscaled and enhanced [original](https://multicians.org/thvv/vvimg/1401rcdb.gif)
+![Alt text](image2.jpeg)
+
+ai upscaled and enhanced [original](https://multicians.org/thvv/vvimg/1401rcdf.gif)
+![Alt text](image3.jpeg)
