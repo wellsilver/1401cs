@@ -9,6 +9,8 @@ using std::thread;
 
 #include "1401.hpp"
 
+mainframe_1401 comp;
+
 SDL_Window *window;
 SDL_Renderer *renderer;
 
@@ -34,17 +36,11 @@ void button(int posx,int posy,int sizex,int sizey,bool toggled) {
   button.h = sizey;
   button.w = sizex;
   buttonoutfillreverse = button;
-  buttonoutfillreverse.y += SDL_ceil((button.h*0.1)/2);
-  buttonoutfillreverse.x += SDL_ceil((button.w*0.05)/2);
-  buttonoutfillreverse.h -= (button.h*0.1);
-  buttonoutfillreverse.w -= (button.w*0.05);
+  buttonoutfillreverse.y -= 1;
+  buttonoutfillreverse.x -= 1;
+  buttonoutfillreverse.h += 2;
+  buttonoutfillreverse.w += 2;
   SDL_GetRenderDrawColor(renderer,&r,&g,&b,NULL);
-  if (toggled) {
-    SDL_SetRenderDrawColor(renderer, r*1.5,g*1.5,b*1.5, SDL_ALPHA_OPAQUE);
-  } else {
-    SDL_SetRenderDrawColor(renderer, r,g,b, SDL_ALPHA_OPAQUE);
-  }
-  SDL_RenderFillRect(renderer, &button);
   if (SDL_PointInRect(&mouse,&button)) {
     SDL_SetRenderDrawColor(renderer, r*1.3,g*1.3,b*1.3, SDL_ALPHA_OPAQUE);
     SDL_RenderDrawRect(renderer, &buttonoutfillreverse);
@@ -52,6 +48,12 @@ void button(int posx,int posy,int sizex,int sizey,bool toggled) {
     SDL_SetRenderDrawColor(renderer, r*0.7,g*0.7,b*0.7, SDL_ALPHA_OPAQUE);
     SDL_RenderDrawRect(renderer, &buttonoutfillreverse);
   }
+  if (toggled) {
+    SDL_SetRenderDrawColor(renderer, r*1.5,g*1.5,b*1.5, SDL_ALPHA_OPAQUE);
+  } else {
+    SDL_SetRenderDrawColor(renderer, r,g,b, SDL_ALPHA_OPAQUE);
+  }
+  SDL_RenderFillRect(renderer, &button);
 }
 
 void controlpanel() {
@@ -88,8 +90,9 @@ void controlpanel() {
   }
 }
 
-void render() {
+void render(mainframe_1401 _comp) {
   SDL_Init(SDL_INIT_EVERYTHING);
+  comp = _comp;
 
   auto v = thread(controlpanel);
   

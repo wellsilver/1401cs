@@ -11,15 +11,16 @@ using namespace std;
 using std::thread;
 
 int main() {
-  auto th = thread(render);
+  mainframe_1401 comp;
 
-  computerrun();
+  auto th = thread(render, comp);
 
   // send a event that gets ignored to the renderer to render a frame
   SDL_Event fakeevent;
   fakeevent.type = SDL_FINGERMOTION;
   SDL_PollEvent(&fakeevent);
 
+  comp.run();
   th.join();
 
   SDL_Quit();
