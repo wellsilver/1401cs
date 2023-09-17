@@ -1,5 +1,13 @@
+#ifndef __render
+#define __render
+
 #define SDL_MAIN_HANDLED
 #include <SDL2/SDL.h>
+
+#include <thread>
+using std::thread;
+
+#include "1401.hpp"
 
 SDL_Window *window;
 SDL_Renderer *renderer;
@@ -46,12 +54,11 @@ void button(int posx,int posy,int sizex,int sizey,bool toggled) {
   }
 }
 
-void render() {
-  SDL_Init(SDL_INIT_EVERYTHING);
-
+void controlpanel() {
   SDL_CreateWindowAndRenderer(300,400,0,&window,&renderer);
 
   SDL_SetWindowMinimumSize(window,200,300);
+  SDL_SetWindowTitle(window,"Console");
 
   SDL_WaitEvent(&e); // wait for a event that main.cpp sends (so we arent just trying to read random memory)
 
@@ -80,3 +87,13 @@ void render() {
     SDL_WaitEvent(&e);
   }
 }
+
+void render() {
+  SDL_Init(SDL_INIT_EVERYTHING);
+
+  auto v = thread(controlpanel);
+  
+  v.join();
+}
+
+#endif

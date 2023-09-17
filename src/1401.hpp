@@ -1,4 +1,6 @@
 // simulation script
+#ifndef __1401
+#define __1401
 
 #include <chrono>
 #include <stdint.h>
@@ -41,3 +43,5 @@ void computerrun() {
   auto c = new mainframe_1401;
   c->run();
 }
+
+#endif
