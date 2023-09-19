@@ -39,9 +39,4 @@ string mainframe_1401::dumpsection(int start, int end) {
 }
 // as a c proggramer who just started learning c++, why does mainframe_1401::dumpsection look so ugly?
 
-void computerrun() {
-  auto c = new mainframe_1401;
-  c->run();
-}
-
 #endif
