@@ -10,7 +10,7 @@
 using namespace std;
 using std::thread;
 
-int main() {
+int main(int argc, char **argv) {
   mainframe_1401 comp;
 
   auto th = thread(render, comp);

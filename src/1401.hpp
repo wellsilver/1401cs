@@ -22,6 +22,8 @@ class mainframe_1401 {
   public:
     void run();
 
+    bool ctrlpnl_checkreset;
+
     list<word1401> memory; // size is either 1400, 4000, or 16000
     string dumpsection(int, int);
 };
@@ -37,6 +39,5 @@ string mainframe_1401::dumpsection(int start, int end) {
   }
   return ret;
 }
-// as a c proggramer who just started learning c++, why does mainframe_1401::dumpsection look so ugly?
 
 #endif
