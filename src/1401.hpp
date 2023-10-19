@@ -12,10 +12,10 @@ using std::list;
 
 struct word1401 {
   char mem;
-  // ^ store the character in its actual string form. 
-  // I cant find any resources on how the 1401 stored its bits internally, 
-  // and the proggraming guides table is not explained
   bool marked;
+  // ^ store the character in its actual string form. 
+  // I cant find any resources on how the 1401 stored its bits internally, other than with 6 bits,
+  // and the proggraming guides table is not explained
 };
 
 class mainframe_1401 {
